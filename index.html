@@ -214,7 +214,7 @@ body::before{
 .cp.passed{fill:var(--green)}
 .cp.active{fill:var(--purple);filter:drop-shadow(0 0 6px rgba(168,85,247,.8))}
 .cl{
-  font-family:var(--data);font-size:9px;letter-spacing:.14em;fill:#5B6478;
+  font-family:var(--data);font-size:8.5px;letter-spacing:.08em;fill:#5B6478;
   text-transform:uppercase;cursor:pointer;transition:fill .2s;
 }
 .cl.active{fill:var(--silver)}
@@ -681,11 +681,24 @@ body.launched .hin.d5{transition-delay:.6s}
   background:repeating-conic-gradient(#E9EDF5 0% 25%,#0A0D14 0% 50%) 0 0/24px 24px;
 }
 footer{
-  border-top:1px solid var(--line);padding:34px 0 44px;
-  font-family:var(--data);font-size:11px;letter-spacing:.16em;color:#5B6478;text-transform:uppercase;
+  border-top:1px solid var(--line);padding:44px 0 54px;
 }
-footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
-footer b{color:var(--dim);font-weight:500}
+.foot-love{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.foot-love .fl-line{
+  width:min(360px,70%);height:1px;
+  background:linear-gradient(90deg,transparent,var(--red) 35%,var(--purple) 65%,transparent);
+}
+.foot-love .fl-tag2{
+  font-family:var(--data);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--dim);
+}
+.foot-love .heart{color:var(--red);display:inline-block;animation:beat 1.6s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}12%{transform:scale(1.35)}24%{transform:scale(1)}}
+.foot-love .fl-name{
+  font-family:var(--display);font-style:italic;font-weight:900;font-size:clamp(26px,4vw,40px);
+  text-transform:uppercase;letter-spacing:.02em;line-height:1;
+  background:linear-gradient(90deg,var(--red),var(--purple));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
 
 /* ============================================================
    RESPONSIVE
@@ -994,7 +1007,7 @@ footer b{color:var(--dim);font-weight:500}
     <div class="classification rv">
       <div class="class-head"><span>Pos</span><span>Project / entrant</span><span>Best lap</span><span></span></div>
 
-      <a class="entry fastest" href="#" aria-label="ForeignerPay, project details">
+      <a class="entry fastest" id="p-fpay" href="#" aria-label="ForeignerPay, project details">
         <span class="pos">01</span>
         <span>
           <h3>ForeignerPay<span class="fl-tag">Fastest lap</span></h3>
@@ -1005,7 +1018,7 @@ footer b{color:var(--dim);font-weight:500}
         <span class="go">→</span>
       </a>
 
-      <a class="entry pb" href="https://validateideaai.vercel.app/" target="_blank" rel="noopener" aria-label="ValidateIdea, project details">
+      <a class="entry pb" id="p-validate" href="https://validateideaai.vercel.app/" target="_blank" rel="noopener" aria-label="ValidateIdea, project details">
         <span class="pos">02</span>
         <span>
           <h3>ValidateIdea</h3>
@@ -1016,7 +1029,7 @@ footer b{color:var(--dim);font-weight:500}
         <span class="go">→</span>
       </a>
 
-      <a class="entry set" href="https://www.zashit.live/waitlist" target="_blank" rel="noopener" aria-label="ZashIt, project details">
+      <a class="entry set" id="p-zashit" href="https://www.zashit.live/waitlist" target="_blank" rel="noopener" aria-label="ZashIt, project details">
         <span class="pos">03</span>
         <span>
           <h3>ZashIt</h3>
@@ -1027,7 +1040,7 @@ footer b{color:var(--dim);font-weight:500}
         <span class="go">→</span>
       </a>
 
-      <a class="entry" href="https://sneaker-sage.vercel.app/" target="_blank" rel="noopener" aria-label="Sneaker Sage, project details">
+      <a class="entry" id="p-sneaker" href="https://sneaker-sage.vercel.app/" target="_blank" rel="noopener" aria-label="Sneaker Sage, project details">
         <span class="pos">04</span>
         <span>
           <h3>Sneaker Sage</h3>
@@ -1038,7 +1051,7 @@ footer b{color:var(--dim);font-weight:500}
         <span class="go">→</span>
       </a>
 
-      <a class="entry" href="https://sankhya-sigma.vercel.app/" target="_blank" rel="noopener" aria-label="Sankhya, project details">
+      <a class="entry" id="p-sankhya" href="https://sankhya-sigma.vercel.app/" target="_blank" rel="noopener" aria-label="Sankhya, project details">
         <span class="pos">05</span>
         <span>
           <h3>Sankhya</h3>
@@ -1049,7 +1062,7 @@ footer b{color:var(--dim);font-weight:500}
         <span class="go">→</span>
       </a>
 
-      <a class="entry" href="https://github.com/frotank" target="_blank" rel="noopener" aria-label="Stock app, project details">
+      <a class="entry" id="p-stockapp" href="https://github.com/frotank" target="_blank" rel="noopener" aria-label="Stock app, project details">
         <span class="pos">06</span>
         <span>
           <h3>Stock App</h3>
@@ -1079,7 +1092,7 @@ footer b{color:var(--dim);font-weight:500}
           <p>Building a credit card recommendation engine — analyzing real spending patterns to match users with the cards that maximize their rewards. Stop missing out on free money.</p>
         </div>
       </div>
-      <div class="stint rv">
+      <div class="stint rv" id="s-fint">
         <span class="yr">Sep 2023 — Nov 2023</span><span class="node"></span>
         <div>
           <h3>Software Engineer Intern</h3>
@@ -1095,7 +1108,7 @@ footer b{color:var(--dim);font-weight:500}
           <p>From a Delhi street corner to NPCI's table: found the problem, interviewed 1,000+ tourists, found the regulatory line through the corner, and handed a working model to the entity that became one of the first two non-bank UPI providers for foreign nationals.</p>
         </div>
       </div>
-      <div class="stint rv">
+      <div class="stint rv" id="s-college">
         <span class="yr">Nov 2021 — Sep 2025</span><span class="node"></span>
         <div>
           <h3>BTech, Computer Science</h3>
@@ -1162,13 +1175,13 @@ footer b{color:var(--dim);font-weight:500}
 </section>
 
 <div class="checker" aria-hidden="true"></div>
+<!-- Assets: W15 photo © Mercedes-AMG Petronas F1 Team via Formula1.com · 3D model "Formula 1 2022" by TheoDevF1 via FetchCFD (CC BY-NC-ND 4.0) -->
 <footer>
-  <div class="wrap">
-    <span><b>Document 27</b> — Portfolio of Gunesh Munjal</span>
-    <span>Issued by the driver · No stewards were consulted</span>
-    <span>© 2026 · Built by hand, raced daily</span>
-    <span>Car imagery: Mercedes-AMG W15 © Mercedes-AMG Petronas F1 Team, via Formula1.com</span>
-    <span>3D model: Formula 1 2022 by TheoDevF1 via FetchCFD · CC BY-NC-ND 4.0</span>
+  <div class="wrap foot-love">
+    <span class="fl-line"></span>
+    <p class="fl-tag2">Made with <span class="heart">♥</span> by the driver</p>
+    <p class="fl-name">Gunesh Munjal</p>
+    <span class="fl-line"></span>
   </div>
 </footer>
 
@@ -1178,8 +1191,20 @@ footer b{color:var(--dim);font-weight:500}
 (function(){
   var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var SECTIONS = ['GRID','TELEMETRY','RESULTS','CAREER','ARTICLES','RADIO'];
-  var HREFS = ['#grid-hero','#telemetry','#classification','#stints','#articles','#radio'];
+  /* the journey circuit: every corner is a real milestone, in career order */
+  var CORNERS = [
+    {label:'GRID',        frac:0.02, target:'#grid-hero'},
+    {label:'TELEMETRY',   frac:0.11, target:'#telemetry'},
+    {label:'COLLEGE',     frac:0.20, target:'#s-college'},
+    {label:'FPAY',        frac:0.29, target:'#p-fpay'},
+    {label:'FINT',        frac:0.375,target:'#s-fint'},
+    {label:'VALIDATE',    frac:0.46, target:'#p-validate'},
+    {label:'SNEAKER SAGE',frac:0.545,target:'#p-sneaker'},
+    {label:'ZASHIT',      frac:0.63, target:'#p-zashit'},
+    {label:'STOCKAPP',    frac:0.715,target:'#p-stockapp'},
+    {label:'SANKHYA',     frac:0.80, target:'#p-sankhya'},
+    {label:'RADIO',       frac:0.92, target:'#radio'}
+  ];
 
   /* 3D car: no auto-rotation for reduced-motion visitors */
   var car3d = document.getElementById('car3d');
@@ -1387,9 +1412,8 @@ footer b{color:var(--dim);font-weight:500}
   secs.forEach(function(s){ spy.observe(s.t); });
 
   /* ============================================================
-     CIRCUIT MAP — track fills in as you drive through the page
+     CIRCUIT MAP — the career journey fills in as you drive the page
      ============================================================ */
-  var FRACS = [0.03, 0.22, 0.40, 0.58, 0.75, 0.9];
   var prog = document.getElementById('trk-prog');
   var carDot = document.getElementById('trk-car');
   var marks = document.getElementById('trk-marks');
@@ -1397,11 +1421,13 @@ footer b{color:var(--dim);font-weight:500}
   var dots = [], labels = [], L = 0, lapP = 0;
 
   function paintMarks(){
+    var active = 0;
+    CORNERS.forEach(function(c, i){ if (c.frac <= lapP) active = i; });
     dots.forEach(function(d, i){
-      d.setAttribute('class', 'cp' + (i === activeIdx ? ' active' : (FRACS[i] < lapP ? ' passed' : '')));
-      labels[i].setAttribute('class', 'cl' + (i === activeIdx ? ' active' : (FRACS[i] < lapP ? ' passed' : '')));
+      d.setAttribute('class', 'cp' + (i === active ? ' active' : (CORNERS[i].frac < lapP ? ' passed' : '')));
+      labels[i].setAttribute('class', 'cl' + (i === active ? ' active' : (CORNERS[i].frac < lapP ? ' passed' : '')));
     });
-    if (status) status.textContent = 'P' + (activeIdx + 1) + ' · ' + SECTIONS[activeIdx] + ' — ' + Math.round(lapP * 100) + '% lap';
+    if (status) status.textContent = 'T' + (active + 1) + ' · ' + CORNERS[active].label + ' — ' + Math.round(lapP * 100) + '% lap';
   }
 
   try {
@@ -1409,42 +1435,24 @@ footer b{color:var(--dim);font-weight:500}
     prog.style.strokeDasharray = L;
     prog.style.strokeDashoffset = L;
     var SVGNS = 'http://www.w3.org/2000/svg';
-    FRACS.forEach(function(f, i){
-      var pt = prog.getPointAtLength(L * f);
+    CORNERS.forEach(function(cn, i){
+      var pt = prog.getPointAtLength(L * cn.frac);
       var c = document.createElementNS(SVGNS, 'circle');
-      c.setAttribute('cx', pt.x); c.setAttribute('cy', pt.y); c.setAttribute('r', 6);
+      c.setAttribute('cx', pt.x); c.setAttribute('cy', pt.y); c.setAttribute('r', 5);
       c.setAttribute('class', 'cp');
       var t = document.createElementNS(SVGNS, 'text');
       var left = pt.x > 100;
-      t.setAttribute('x', left ? pt.x - 12 : pt.x + 12);
+      t.setAttribute('x', left ? pt.x - 10 : pt.x + 10);
       t.setAttribute('y', pt.y + 3);
       t.setAttribute('text-anchor', left ? 'end' : 'start');
       t.setAttribute('class', 'cl');
-      t.textContent = SECTIONS[i];
-      function goto(){ var el = document.querySelector(HREFS[i]); if (el) el.scrollIntoView({behavior: reduced ? 'auto' : 'smooth'}); }
+      t.textContent = cn.label;
+      function goto(){ var el = document.querySelector(cn.target); if (el) el.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'center'}); }
       c.addEventListener('click', goto);
       t.addEventListener('click', goto);
       marks.appendChild(c); marks.appendChild(t);
       dots.push(c); labels.push(t);
     });
-    /* Map scroll → lap fraction so the car dot sits exactly on a corner
-       dot while that section is on screen, interpolating in between. */
-    function lapProgress(){
-      var max = document.documentElement.scrollHeight - innerHeight;
-      if (max <= 0) return 0;
-      var y = Math.min(scrollY, max);
-      var xs = secs.map(function(s){ return Math.max(0, s.t.offsetTop - innerHeight * 0.4); });
-      xs.push(max);
-      var stops = FRACS.concat(1);
-      if (y <= xs[0]) return xs[0] > 0 ? stops[0] * (y / xs[0]) : stops[0];
-      for (var i = 0; i < xs.length - 1; i++){
-        if (y < xs[i + 1]){
-          var span = xs[i + 1] - xs[i];
-          return stops[i] + (span > 0 ? (stops[i + 1] - stops[i]) * (y - xs[i]) / span : 0);
-        }
-      }
-      return 1;
-    }
 
     var ticking = false;
     function onScroll(){
@@ -1452,7 +1460,8 @@ footer b{color:var(--dim);font-weight:500}
       ticking = true;
       requestAnimationFrame(function(){
         ticking = false;
-        lapP = lapProgress();
+        var max = document.documentElement.scrollHeight - innerHeight;
+        lapP = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
         prog.style.strokeDashoffset = L * (1 - lapP);
         var pt = prog.getPointAtLength(L * lapP);
         carDot.setAttribute('cx', pt.x); carDot.setAttribute('cy', pt.y);

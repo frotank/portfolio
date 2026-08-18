@@ -868,8 +868,8 @@ export default function Home() {
                 <small>Seasons</small>
               </div>
               <div>
-                <b>1K+</b>
-                <small>Interviews</small>
+                <b>06</b>
+                <small>Products shipped</small>
               </div>
               <div>
                 <b>00</b>
@@ -943,7 +943,7 @@ export default function Home() {
               <div className="compound">
                 <span className="tyre soft">S</span>
                 <small>
-                  <b>Soft — daily stint</b>Product Strategy · GTM
+                  <b>Soft — daily stint</b>Product Strategy
                 </small>
               </div>
               <div className="compound">
@@ -1257,9 +1257,7 @@ export default function Home() {
                   </p>
                   <p>
                     The junior formula — fundamentals, all-nighters, and
-                    learning to finish every race you start. Certified: Docker —
-                    Containerization for Modern Development (codedamn, Nov
-                    2025).
+                    learning to finish every race you start.
                   </p>
                 </div>
               </div>
@@ -1385,7 +1383,7 @@ export default function Home() {
 
             <div className="contact-row rv">
               <a className="btn p" href="mailto:guneshmunjal09@gmail.com">
-                <span>Box box — email me</span>
+                <span>Box box</span>
               </a>
             </div>
             <div className="contact-links rv">

@@ -473,14 +473,32 @@ export default function Home() {
 
     /* lap bar + fallback lap-complete trigger, all screen sizes */
     const lapbar = document.getElementById("lapbar")!;
+    let barTick = false;
     function topBar() {
-      const max = document.documentElement.scrollHeight - innerHeight;
-      const p = max > 0 ? Math.min(1, scrollY / max) : 0;
-      lapbar.style.width = p * 100 + "%";
-      if (p >= 0.98) lapComplete();
+      if (barTick) return;
+      barTick = true;
+      requestAnimationFrame(function () {
+        barTick = false;
+        const max = document.documentElement.scrollHeight - innerHeight;
+        const p = max > 0 ? Math.min(1, scrollY / max) : 0;
+        lapbar.style.width = p * 100 + "%";
+        if (p >= 0.98) lapComplete();
+      });
     }
     addEventListener("scroll", topBar, { passive: true, signal: sig });
     topBar();
+
+    /* park the 3D car when it leaves the viewport — no WebGL frames offscreen */
+    let heroVis: IntersectionObserver | null = null;
+    if (car3d && !reduced) {
+      heroVis = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting) car3d.setAttribute("auto-rotate", "");
+          else car3d.removeAttribute("auto-rotate");
+        });
+      });
+      heroVis.observe(car3d);
+    }
 
     return () => {
       ac.abort();
@@ -488,6 +506,7 @@ export default function Home() {
       if (spTimer) clearTimeout(spTimer);
       if (toastTimer) clearTimeout(toastTimer);
       if (io) io.disconnect();
+      if (heroVis) heroVis.disconnect();
       spy.disconnect();
       document.body.style.overflow = "";
     };
@@ -528,7 +547,7 @@ export default function Home() {
             <feTurbulence
               type="fractalNoise"
               baseFrequency="0.85"
-              numOctaves="2"
+              numOctaves="1"
               stitchTiles="stitch"
             />
             <feColorMatrix

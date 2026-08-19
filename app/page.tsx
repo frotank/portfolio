@@ -2,19 +2,20 @@
 
 import { useEffect } from "react";
 
-/* the journey circuit: every corner is a real milestone, in career order */
+/* the journey circuit: corners in page order; each one's track position is
+   computed from where its section actually sits in the document */
 const CORNERS = [
-  { label: "GRID", frac: 0.02, target: "#grid-hero" },
-  { label: "TELEMETRY", frac: 0.11, target: "#telemetry" },
-  { label: "COLLEGE", frac: 0.2, target: "#s-college" },
-  { label: "FPAY", frac: 0.29, target: "#p-fpay" },
-  { label: "FINT", frac: 0.375, target: "#s-fint" },
-  { label: "VALIDATE", frac: 0.46, target: "#p-validate" },
-  { label: "SNEAKER SAGE", frac: 0.545, target: "#p-sneaker" },
-  { label: "ZASHIT", frac: 0.63, target: "#p-zashit" },
-  { label: "STOCKAPP", frac: 0.715, target: "#p-stockapp" },
-  { label: "SANKHYA", frac: 0.8, target: "#p-sankhya" },
-  { label: "RADIO", frac: 0.92, target: "#radio" },
+  { label: "GRID", target: "#grid-hero" },
+  { label: "TELEMETRY", target: "#telemetry" },
+  { label: "FPAY", target: "#p-fpay" },
+  { label: "VALIDATE", target: "#p-validate" },
+  { label: "ZASHIT", target: "#p-zashit" },
+  { label: "SNEAKER SAGE", target: "#p-sneaker" },
+  { label: "SANKHYA", target: "#p-sankhya" },
+  { label: "STOCKAPP", target: "#p-stockapp" },
+  { label: "FINT", target: "#s-fint" },
+  { label: "COLLEGE", target: "#s-college" },
+  { label: "RADIO", target: "#radio" },
 ];
 
 export default function Home() {
@@ -332,25 +333,26 @@ export default function Home() {
     const marks = document.getElementById("trk-marks")!;
     const status = document.getElementById("lap-status");
     const dots: SVGCircleElement[] = [],
-      labels: SVGTextElement[] = [];
+      labels: SVGTextElement[] = [],
+      fracs: number[] = CORNERS.map(function () {
+        return 0;
+      });
     let L = 0,
       lapP = 0;
 
     function paintMarks() {
       let active = 0;
-      CORNERS.forEach(function (c, i) {
-        if (c.frac <= lapP) active = i;
+      fracs.forEach(function (f, i) {
+        if (f <= lapP) active = i;
       });
       dots.forEach(function (d, i) {
         d.setAttribute(
           "class",
-          "cp" +
-            (i === active ? " active" : CORNERS[i].frac < lapP ? " passed" : "")
+          "cp" + (i === active ? " active" : fracs[i] < lapP ? " passed" : "")
         );
         labels[i].setAttribute(
           "class",
-          "cl" +
-            (i === active ? " active" : CORNERS[i].frac < lapP ? " passed" : "")
+          "cl" + (i === active ? " active" : fracs[i] < lapP ? " passed" : "")
         );
       });
       if (status)
@@ -371,17 +373,10 @@ export default function Home() {
       prog.style.strokeDashoffset = String(L);
       const SVGNS = "http://www.w3.org/2000/svg";
       CORNERS.forEach(function (cn) {
-        const pt = prog.getPointAtLength(L * cn.frac);
         const c = document.createElementNS(SVGNS, "circle");
-        c.setAttribute("cx", String(pt.x));
-        c.setAttribute("cy", String(pt.y));
         c.setAttribute("r", "5");
         c.setAttribute("class", "cp");
         const t = document.createElementNS(SVGNS, "text");
-        const left = pt.x > 100;
-        t.setAttribute("x", String(left ? pt.x - 10 : pt.x + 10));
-        t.setAttribute("y", String(pt.y + 3));
-        t.setAttribute("text-anchor", left ? "end" : "start");
         t.setAttribute("class", "cl");
         t.textContent = cn.label;
         function goto() {
@@ -399,6 +394,35 @@ export default function Home() {
         dots.push(c);
         labels.push(t);
       });
+
+      /* each corner sits at the scroll fraction where its section is
+         centered on screen, so the car dot and the lit label always
+         agree with what the visitor is actually looking at */
+      function layoutMarks() {
+        const max = document.documentElement.scrollHeight - innerHeight;
+        CORNERS.forEach(function (cn, i) {
+          const el = document.querySelector(cn.target);
+          if (el && max > 0) {
+            const r = el.getBoundingClientRect();
+            const mid = scrollY + r.top + r.height / 2 - innerHeight / 2;
+            fracs[i] = Math.min(0.99, Math.max(0.02, mid / max));
+          }
+          const pt = prog.getPointAtLength(L * fracs[i]);
+          const left = pt.x > 100;
+          dots[i].setAttribute("cx", String(pt.x));
+          dots[i].setAttribute("cy", String(pt.y));
+          labels[i].setAttribute("x", String(left ? pt.x - 10 : pt.x + 10));
+          labels[i].setAttribute("y", String(pt.y + 3));
+          labels[i].setAttribute("text-anchor", left ? "end" : "start");
+        });
+      }
+      layoutMarks();
+      function relayout() {
+        layoutMarks();
+        paintMarks();
+      }
+      addEventListener("resize", relayout, { passive: true, signal: sig });
+      addEventListener("load", relayout, { signal: sig });
 
       let ticking = false;
       function onScroll() {
@@ -920,7 +944,6 @@ export default function Home() {
                   max-camera-orbit="auto 92deg auto"
                   loading="eager"
                 ></model-viewer>
-                <span className="drag-hint">Auto-rotating · drag to inspect</span>
               </div>
               <div className="platform" aria-hidden="true"></div>
               <div className="scroll-cue">

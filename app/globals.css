@@ -491,11 +491,6 @@ body.launched .hin.d5{transition-delay:.6s}
   --poster-color:transparent;background:transparent;
   outline:none;
 }
-.stage .drag-hint{
-  position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
-  font-family:var(--data);font-size:10px;letter-spacing:.26em;text-transform:uppercase;
-  color:#5B6478;pointer-events:none;white-space:nowrap;
-}
 .platform{
   width:min(620px,84vw);height:72px;margin-top:-46px;position:relative;pointer-events:none;
 }

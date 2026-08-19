@@ -880,11 +880,11 @@ export default function Home() {
         {/* ===================== HERO / GRID ===================== */}
         <section id="grid-hero">
           <div className="race-no" aria-hidden="true">
-            27
+            09
           </div>
           <div className="wrap">
             <p className="hero-eyebrow hin d1">
-              <span className="dot"></span>Car No. 27 &nbsp;·&nbsp; Product
+              <span className="dot"></span>Car No. 09 &nbsp;·&nbsp; Product
               Engineer · Fintech &amp; AI
             </p>
             <h1 className="hin d2">
@@ -927,13 +927,13 @@ export default function Home() {
               <div className="stage">
                 <model-viewer
                   id="car3d"
-                  src="/assets/f1-2022.glb"
+                  src="/assets/f1-2022-driver.glb"
                   alt="Formula One 2022 car, interactive 3D model"
                   camera-controls=""
                   disable-zoom=""
                   disable-pan=""
                   auto-rotate=""
-                  rotation-per-second="20deg"
+                  rotation-per-second="-20deg"
                   auto-rotate-delay="800"
                   interaction-prompt="none"
                   shadow-intensity="1.3"
@@ -1348,7 +1348,7 @@ export default function Home() {
                 aria-label="Read: Inside ForeignerPay"
               >
                 <span className="doc">
-                  <b>Doc 27</b>
+                  <b>Doc 09</b>
                   <span>Case study</span>
                 </span>
                 <h3>Inside ForeignerPay</h3>
@@ -1392,7 +1392,7 @@ export default function Home() {
           <div className="wrap">
             <p className="sector s1 rv">
               <span className="tick"></span>Pit wall — Open channel
-              <span className="stime">Lap 27 · Box</span>
+              <span className="stime">Lap 09 · Box</span>
             </p>
             <h2 className="rv">Team radio</h2>
             <p className="lede rv">
@@ -1408,7 +1408,7 @@ export default function Home() {
                   <i></i>
                   <i></i>
                 </span>
-                Radio — Car 27 · Pit wall
+                Radio — Car 09 · Pit wall
               </div>
               <div className="msg pit">
                 <small>Pit wall</small>
@@ -1418,7 +1418,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="msg driver">
-                <small>Car 27</small>
+                <small>Car 09</small>
                 <p>Copy. Send the brief — let&apos;s get it on track.</p>
               </div>
             </div>

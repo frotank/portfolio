@@ -25,7 +25,7 @@ const chakra = Chakra_Petch({
 });
 
 export const metadata: Metadata = {
-  title: "Gunesh Munjal — No. 27 — Product Engineer",
+  title: "Gunesh Munjal — No. 09 — Product Engineer",
   description:
     "Portfolio of Gunesh Munjal — product engineer building fintech and AI products. Built like a race weekend: telemetry, classification, team radio.",
 };

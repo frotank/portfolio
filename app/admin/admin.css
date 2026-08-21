@@ -1,0 +1,83 @@
+/* ============================================================
+   PIT WALL — admin console styling that plain utilities can't
+   express: carbon weave, kerb stripes, sector ticks, lamps.
+   ============================================================ */
+
+/* the site's global stylesheet sizes bare h1 for the hero; these
+   scoped rules win over it (higher specificity, unlayered) */
+.pw-carbon h1.pw-title {
+  font-size: 1.125rem;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+.pw-carbon h1.pw-title-lg {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+/* carbon-fibre weave over the base carbon color */
+.pw-carbon {
+  background-color: var(--carbon);
+  background-image:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.016) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.016) 75%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.016) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.016) 75%);
+  background-size: 14px 14px;
+  background-position: 0 0, 7px 7px;
+}
+
+/* red/white kerb stripe — used as a thin edge, never a surface */
+.pw-kerb {
+  height: 4px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--red) 0 10px,
+    #fff 10px 20px
+  );
+  opacity: 0.85;
+}
+
+/* skewed sector tick, same grammar as the site's .sector .tick */
+.pw-tick {
+  display: inline-block;
+  width: 18px;
+  height: 7px;
+  transform: skewX(-18deg);
+  flex: none;
+}
+
+/* status lamp with a soft glow when lit */
+.pw-lamp {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+}
+.pw-lamp.on {
+  background: var(--green);
+  box-shadow: 0 0 10px rgba(46, 229, 143, 0.7);
+}
+.pw-lamp.off {
+  background: var(--yellow);
+  box-shadow: 0 0 10px rgba(255, 212, 54, 0.55);
+}
+
+/* timing row — hover nudges right like a live timing screen */
+.pw-row {
+  transition: transform 0.16s ease, border-color 0.16s ease, background-color 0.16s ease;
+}
+.pw-row:hover {
+  transform: translateX(3px);
+}
+
+/* expanded editor gets a sector-colored rail */
+.pw-open-purple { box-shadow: inset 3px 0 0 var(--purple); }
+.pw-open-yellow { box-shadow: inset 3px 0 0 var(--yellow); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pw-row,
+  .pw-row:hover {
+    transition: none;
+    transform: none;
+  }
+}

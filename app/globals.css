@@ -42,7 +42,9 @@
   --tower-w:232px;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+/* box-sizing/margin/padding reset comes from Tailwind's preflight
+   (base layer) — an unlayered *{} rule here would override every
+   margin/padding utility in the app */
 html{scroll-behavior:smooth}
 body{
   background:var(--carbon);

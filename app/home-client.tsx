@@ -1014,25 +1014,25 @@ export default function HomeClient({ content }: { content: SiteContent }) {
               <div className="compound">
                 <span className="tyre soft">S</span>
                 <small>
-                  <b>Soft — daily stint</b>Product Strategy
+                  <b>Soft — daily stint</b>Next.js · TypeScript
                 </small>
               </div>
               <div className="compound">
                 <span className="tyre med">M</span>
                 <small>
-                  <b>Medium — long runs</b>Payments · UPI rails
+                  <b>Medium — long runs</b>AI · RAG · LangChain
                 </small>
               </div>
               <div className="compound">
                 <span className="tyre hard">H</span>
                 <small>
-                  <b>Hard — endurance</b>Software Development
+                  <b>Hard — endurance</b>MERN · React Native
                 </small>
               </div>
               <div className="compound">
                 <span className="tyre inter">I</span>
                 <small>
-                  <b>Inters — changing conditions</b>AI · OCR
+                  <b>Inters — changing conditions</b>Payment systems
                 </small>
               </div>
             </div>
@@ -1040,12 +1040,12 @@ export default function HomeClient({ content }: { content: SiteContent }) {
             <div className="telemetry">
               {(
                 [
-                  ["Product strategy", "94%"],
+                  ["Next.js · React · TypeScript · Python", "94%"],
                   ["Payment systems", "92%"],
-                  ["Customer research", "90%"],
-                  ["Full-stack development", "88%"],
-                  ["AI & OCR tooling", "84%"],
-                  ["Product marketing", "80%"],
+                  ["MERN stack (MongoDB · Express · Node)", "90%"],
+                  ["React Native", "88%"],
+                  ["RAG · LangChain · AI agents", "86%"],
+                  ["Supabase · Postgres · Vercel", "84%"],
                 ] as [string, string][]
               ).map(([nm, pc]) => (
                 <div
@@ -1235,7 +1235,7 @@ export default function HomeClient({ content }: { content: SiteContent }) {
               <a
                 className="entry"
                 id="p-stockapp"
-                href="https://github.com/frotank"
+                href="https://drive.google.com/file/d/1vyPzpDyVniHY9hxk0cWr9FCI52hP7M1Q/view"
                 target="_blank"
                 rel="noopener"
                 aria-label="Stock app, project details"

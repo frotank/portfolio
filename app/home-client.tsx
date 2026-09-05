@@ -913,8 +913,8 @@ export default function HomeClient({ content }: { content: SiteContent }) {
           </div>
           <div className="wrap">
             <p className="hero-eyebrow hin d1">
-              <span className="dot"></span>Car No. 09 &nbsp;·&nbsp; Product
-              Engineer · Fintech &amp; AI
+              <span className="dot"></span>Car No. 09 &nbsp;·&nbsp; Business &amp;
+              Product Analyst · Fintech &amp; Payments
             </p>
             <h1 className="hin d2">
               <span className="thin">Lights out —</span>
@@ -922,34 +922,39 @@ export default function HomeClient({ content }: { content: SiteContent }) {
               <span className="accent">.</span>
             </h1>
             <p className="hero-sub hin d3">
-              I build products the way a race team builds a car: obsessively
-              researched, stripped of everything that doesn&apos;t make it
-              faster, and shipped before the competition leaves the garage.
+              I work a problem the way a pit wall works a race: talk to the
+              people living it, read the rulebook line by line, model the
+              numbers, and hand back a decision the team can act on before the
+              next lap.
             </p>
             <div className="hero-cta hin d4">
               <a className="btn p" href="#classification">
-                <span>View race results</span>
+                <span>View the analysis</span>
               </a>
-              <a className="btn s" href="#radio">
-                <span>Open team radio</span>
+              <a
+                className="btn s"
+                href="/Gunesh-Munjal-Analyst-CV.pdf"
+                download="Gunesh-Munjal-Analyst-CV.pdf"
+              >
+                <span>Download CV</span>
               </a>
             </div>
             <div className="hero-stats hin d4">
               <div>
-                <b>05</b>
-                <small>Seasons</small>
+                <b>1K+</b>
+                <small>Interviews</small>
               </div>
               <div>
-                <b>06</b>
-                <small>Products shipped</small>
+                <b>01</b>
+                <small>Model at NPCI</small>
+              </div>
+              <div>
+                <b>454</b>
+                <small>Reports · week 1</small>
               </div>
               <div>
                 <b>00</b>
                 <small>DNFs</small>
-              </div>
-              <div>
-                <b>P1</b>
-                <small>Ambition</small>
               </div>
             </div>
             <div className="showcase hin d5">
@@ -984,15 +989,19 @@ export default function HomeClient({ content }: { content: SiteContent }) {
           <div className="ticker" aria-hidden="true">
             <div className="ticker-inner">
               <b className="tg">DRS enabled</b> — scroll to overtake
-              &nbsp;·&nbsp; <b className="tp">5 seasons on the grid</b>{" "}
-              &nbsp;·&nbsp; 1,000+ customer interviews &nbsp;·&nbsp;{" "}
-              <b className="ty">0 DNFs in production</b> &nbsp;·&nbsp; currently
-              open to new race seats &nbsp;·&nbsp;{" "}
+              &nbsp;·&nbsp; <b className="tp">Business &amp; product analyst</b>{" "}
+              &nbsp;·&nbsp; 1,000+ customer interviews &nbsp;·&nbsp; RBI rulebook
+              read cover to cover &nbsp;·&nbsp;{" "}
+              <b className="ty">one payments model at NPCI</b> &nbsp;·&nbsp;
+              open to analyst seats in fintech, payments and product
+              &nbsp;·&nbsp;{" "}
               <b className="tg">DRS enabled</b> — scroll to overtake
-              &nbsp;·&nbsp; <b className="tp">5 seasons on the grid</b>{" "}
-              &nbsp;·&nbsp; 1,000+ customer interviews &nbsp;·&nbsp;{" "}
-              <b className="ty">0 DNFs in production</b> &nbsp;·&nbsp; currently
-              open to new race seats &nbsp;·&nbsp;
+              &nbsp;·&nbsp; <b className="tp">Business &amp; product analyst</b>{" "}
+              &nbsp;·&nbsp; 1,000+ customer interviews &nbsp;·&nbsp; RBI rulebook
+              read cover to cover &nbsp;·&nbsp;{" "}
+              <b className="ty">one payments model at NPCI</b> &nbsp;·&nbsp;
+              open to analyst seats in fintech, payments and product
+              &nbsp;·&nbsp;
             </div>
           </div>
         </section>
@@ -1006,33 +1015,33 @@ export default function HomeClient({ content }: { content: SiteContent }) {
             </p>
             <h2 className="rv">What the data says</h2>
             <p className="lede rv">
-              Every car setup is a compromise. This is mine — the compounds I
-              run most, and the throttle traces to prove it.
+              Every analysis is a setup choice. These are the compounds I run
+              most — and the traces that show where the lap time comes from.
             </p>
 
             <div className="compounds rv">
               <div className="compound">
                 <span className="tyre soft">S</span>
                 <small>
-                  <b>Soft — daily stint</b>Next.js · TypeScript
+                  <b>Soft — daily stint</b>Customer research · interviews
                 </small>
               </div>
               <div className="compound">
                 <span className="tyre med">M</span>
                 <small>
-                  <b>Medium — long runs</b>AI · RAG · LangChain
+                  <b>Medium — long runs</b>SQL · Python · modelling
                 </small>
               </div>
               <div className="compound">
                 <span className="tyre hard">H</span>
                 <small>
-                  <b>Hard — endurance</b>MERN · React Native
+                  <b>Hard — endurance</b>Payments · RBI · UPI rules
                 </small>
               </div>
               <div className="compound">
                 <span className="tyre inter">I</span>
                 <small>
-                  <b>Inters — changing conditions</b>Payment systems
+                  <b>Inters — changing conditions</b>Building the tooling · Next.js
                 </small>
               </div>
             </div>
@@ -1040,12 +1049,12 @@ export default function HomeClient({ content }: { content: SiteContent }) {
             <div className="telemetry">
               {(
                 [
-                  ["Next.js · React · TypeScript · Python", "94%"],
-                  ["Payment systems", "92%"],
-                  ["MERN stack (MongoDB · Express · Node)", "90%"],
-                  ["React Native", "88%"],
-                  ["RAG · LangChain · AI agents", "86%"],
-                  ["Supabase · Postgres · Vercel", "84%"],
+                  ["Customer research · 1,000+ interviews · market sizing", "94%"],
+                  ["Payments & regulation · RBI KYC · PPI · UPI · NPCI", "92%"],
+                  ["Competitor analysis · go-to-market strategy", "90%"],
+                  ["SQL · Python · spending-pattern modelling", "88%"],
+                  ["Product strategy · recommendation logic · pricing", "86%"],
+                  ["Building the tooling · Next.js · TypeScript · Supabase", "84%"],
                 ] as [string, string][]
               ).map(([nm, pc]) => (
                 <div
@@ -1075,9 +1084,9 @@ export default function HomeClient({ content }: { content: SiteContent }) {
             </p>
             <h2 className="rv">Final classification</h2>
             <p className="lede rv">
-              Selected projects, ranked like a Sunday afternoon. Purple is the
-              fastest lap, green a personal best — every one of these finished
-              the race.
+              Selected work, ranked like a Sunday afternoon. Purple is the
+              fastest lap, green a personal best — every one started with a
+              question and finished with a number.
             </p>
 
             <div className="classification rv">
@@ -1100,16 +1109,17 @@ export default function HomeClient({ content }: { content: SiteContent }) {
                     ForeignerPay<span className="fl-tag">Fastest lap</span>
                   </h3>
                   <p>
-                    UPI access for foreign tourists in India. 1,000+ customer
-                    interviews, a KYC loophole spotted in RBI&apos;s Master
-                    Direction, and a payment model that reached NPCI — becoming
-                    the basis for one of the first two non-bank providers
-                    authorized to serve foreign nationals.
+                    Why can&apos;t foreign tourists pay digitally in India?
+                    1,000+ structured interviews sized the problem, a close read
+                    of RBI&apos;s Master Direction on KYC surfaced the ₹20,000
+                    wallet provision, and the resulting UPI / PPI model went to
+                    NPCI — the basis for one of the first two non-bank providers
+                    authorised to serve foreign nationals.
                   </p>
                   <span className="stack">
-                    <span>Payments</span>
+                    <span>Customer research</span>
+                    <span>Regulatory analysis</span>
                     <span>UPI / PPI</span>
-                    <span>Regulatory strategy</span>
                   </span>
                 </span>
                 <span className="laptime">
@@ -1130,14 +1140,14 @@ export default function HomeClient({ content }: { content: SiteContent }) {
                 <span>
                   <h3>ValidateIdea</h3>
                   <p>
-                    Validation reports for early-stage founders — automated
-                    market research, GTM strategy and competitor analysis.
-                    Guided prompt assistance sharpens the inputs; better inputs
-                    sharpen the report.
+                    Automated validation reports for early-stage founders —
+                    market sizing, competitor analysis and go-to-market,
+                    generated from guided inputs. An analyst&apos;s checklist,
+                    turned into a product: better inputs, sharper report.
                   </p>
                   <span className="stack">
-                    <span>AI reports</span>
                     <span>Market research</span>
+                    <span>Competitor analysis</span>
                     <span>GTM</span>
                   </span>
                 </span>
@@ -1159,19 +1169,19 @@ export default function HomeClient({ content }: { content: SiteContent }) {
                 <span>
                   <h3>ZashIt</h3>
                   <p>
-                    Credit card recommendation engine that reads your real
-                    spending patterns and matches you to the two cards that pay
-                    you back the most — plus hands-on CC consulting for HENRYs.
-                    Stop missing out on free money.
+                    Reads a user&apos;s real spending mix from statement OCR,
+                    models expected rewards across cards, and surfaces the two
+                    that pay back the most. Refined through one-to-one
+                    consulting sessions with high-earning professionals.
                   </p>
                   <span className="stack">
-                    <span>OCR</span>
+                    <span>Spending analysis</span>
+                    <span>Rewards modelling</span>
                     <span>Fintech</span>
-                    <span>Product strategy</span>
                   </span>
                 </span>
                 <span className="laptime">
-                  <b>Top 2</b>cards matched
+                  <b>Top 2</b>cards ranked per user
                 </span>
                 <span className="go">→</span>
               </a>
@@ -1188,13 +1198,13 @@ export default function HomeClient({ content }: { content: SiteContent }) {
                 <span>
                   <h3>Sneaker Sage</h3>
                   <p>
-                    Real-time price predictions for sneaker resellers, built
-                    from user spending data and market trends — so sellers know
-                    exactly when to flip for maximum profit.
+                    Resale price prediction for sneaker sellers, modelled from
+                    spending data and market trends — a signal for when to
+                    sell, not just what a pair is worth.
                   </p>
                   <span className="stack">
+                    <span>Price modelling</span>
                     <span>Data analysis</span>
-                    <span>Pricing</span>
                     <span>Web</span>
                   </span>
                 </span>
@@ -1216,12 +1226,12 @@ export default function HomeClient({ content }: { content: SiteContent }) {
                 <span>
                   <h3>Sankhya</h3>
                   <p>
-                    A platform where people post their opinions and earn social
-                    status for them — take a stance, back it up, and build your
-                    reputation on the leaderboard.
+                    An opinion platform with a reputation leaderboard — take a
+                    stance, back it up, and let the scoring decide who has
+                    earned the status.
                   </p>
                   <span className="stack">
-                    <span>Social</span>
+                    <span>Scoring logic</span>
                     <span>Community</span>
                     <span>Web</span>
                   </span>
@@ -1244,9 +1254,9 @@ export default function HomeClient({ content }: { content: SiteContent }) {
                 <span>
                   <h3>Stock App</h3>
                   <p>
-                    Full-stack React Native stock app clone built with Expo —
-                    owned end-to-end, from UI/UX design through frontend
-                    implementation to backend integration.
+                    Full-stack React Native stock app built with Expo, owned
+                    from UI design to backend — proof that when the analysis
+                    needs tooling, I can build it myself.
                   </p>
                   <span className="stack">
                     <span>React Native</span>
@@ -1272,8 +1282,8 @@ export default function HomeClient({ content }: { content: SiteContent }) {
             </p>
             <h2 className="rv">Stint history</h2>
             <p className="lede rv">
-              Three teams, one trajectory. Each stint taught a different kind of
-              racing.
+              Three stints, one line through the corner: find the question,
+              get the data, hand over a decision.
             </p>
 
             <div className="stints">
@@ -1301,8 +1311,8 @@ export default function HomeClient({ content }: { content: SiteContent }) {
             </p>
             <h2 className="rv">Race reports</h2>
             <p className="lede rv">
-              Written debriefs from the garage — what worked, what broke, and
-              what the data said afterwards.
+              Written debriefs from the pit wall — what the question was, what
+              the data said, and what we decided because of it.
             </p>
 
             <div className="articles rv">
@@ -1344,7 +1354,7 @@ export default function HomeClient({ content }: { content: SiteContent }) {
             </p>
             <h2 className="rv">Team radio</h2>
             <p className="lede rv">
-              Got a project that needs a driver? The channel is open.
+              Got a decision that needs an analyst? The channel is open.
             </p>
 
             <div className="radio rv" aria-label="Radio transcript">
@@ -1361,13 +1371,16 @@ export default function HomeClient({ content }: { content: SiteContent }) {
               <div className="msg pit">
                 <small>Pit wall</small>
                 <p>
-                  Gunesh, we&apos;ve got a new project on the timing screen.
-                  Interested?
+                  Gunesh, we&apos;ve got a decision on the timing screen and
+                  the data&apos;s a mess. Can you take a look?
                 </p>
               </div>
               <div className="msg driver">
                 <small>Car 09</small>
-                <p>Copy. Send the brief — let&apos;s get it on track.</p>
+                <p>
+                  Copy. Send me the question and the data — I&apos;ll bring back
+                  a recommendation.
+                </p>
               </div>
             </div>
 
@@ -1398,6 +1411,12 @@ export default function HomeClient({ content }: { content: SiteContent }) {
               >
                 GitHub ↗
               </a>
+              <a
+                href="/Gunesh-Munjal-Analyst-CV.pdf"
+                download="Gunesh-Munjal-Analyst-CV.pdf"
+              >
+                Analyst CV ↓
+              </a>
             </div>
           </div>
         </section>
@@ -1408,7 +1427,7 @@ export default function HomeClient({ content }: { content: SiteContent }) {
           <div className="wrap foot-love">
             <span className="fl-line"></span>
             <p className="fl-tag2">
-              Made with <span className="heart">♥</span> by the driver
+              Made with <span className="heart">♥</span> from the pit wall
             </p>
             <p className="fl-name">Gunesh Munjal</p>
             <span className="fl-line"></span>

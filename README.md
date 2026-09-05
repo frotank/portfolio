@@ -1,6 +1,8 @@
 # Portfolio — Gunesh Munjal
 
-F1-themed portfolio built with Next.js, deployed on Vercel.
+F1-themed portfolio for a business & product analyst (fintech and payments),
+built with Next.js and deployed on Vercel. The downloadable analyst CV lives at
+`public/Gunesh-Munjal-Analyst-CV.pdf` (source in `cv/`).
 
 ## Editing content (no code needed)
 

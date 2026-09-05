@@ -38,10 +38,10 @@ export const SEED_CONTENT: SiteContent = {
     {
       id: "zashit",
       period: "May 2025 — Dec 2025",
-      title: "ZashIt — Builder",
-      team: "Project · 8 months",
+      title: "ZashIt — Founder, Research & Product",
+      team: "Credit card recommendation engine · 8 months",
       description:
-        "Building a credit card recommendation engine — analyzing real spending patterns to match users with the cards that maximize their rewards. Stop missing out on free money.",
+        "Modelled how a user's spending mix decides the right card portfolio: statement OCR reads real spending, an expected-rewards model ranks the cards, and the top two surface. One-to-one consulting sessions with high-earning professionals fed straight back into the matching logic.",
       circuitLabel: "",
     },
     {
@@ -50,16 +50,16 @@ export const SEED_CONTENT: SiteContent = {
       title: "Software Engineer Intern",
       team: "FINT · Internship · Remote · 3 months",
       description:
-        "A short, sharp stint in fintech engineering — shipping production code on someone else's car teaches you to read a new garage fast.",
+        "Three months shipping production code in an unfamiliar fintech codebase. Reading someone else's systems fast is its own kind of analysis.",
       circuitLabel: "FINT",
     },
     {
       id: "fpay",
       period: "Sep 2022 — Jun 2023",
-      title: "ForeignerPay",
-      team: "Project · Full-time · 10 months",
+      title: "ForeignerPay — Founder, Research & Product Lead",
+      team: "UPI access for foreign tourists · Full-time · 10 months",
       description:
-        "From a Delhi street corner to NPCI's table: found the problem, interviewed 1,000+ tourists, found the regulatory line through the corner, and handed a working model to the entity that became one of the first two non-bank UPI providers for foreign nationals.",
+        "From a Delhi street corner to NPCI's table: 1,000+ structured tourist interviews to size the problem, RBI's KYC and PPI rules read line by line to find the ₹20,000 wallet provision, and a working UPI model handed to the entity that became one of the first two non-bank UPI providers for foreign nationals.",
       circuitLabel: "",
     },
     {
@@ -68,7 +68,7 @@ export const SEED_CONTENT: SiteContent = {
       title: "BTech, Computer Science",
       team: "Inderprastha Engineering College · The academy years",
       description:
-        "The junior formula — fundamentals, all-nighters, and learning to finish every race you start.",
+        "The junior formula — CS fundamentals, all-nighters, and learning to finish every race you start.",
       circuitLabel: "COLLEGE",
     },
   ],
@@ -90,7 +90,7 @@ export const SEED_CONTENT: SiteContent = {
       kind: "Case study",
       title: "Inside ForeignerPay",
       description:
-        "Why tourists can't pay in India, the ₹20,000 wallet loophole in RBI's KYC rules, and how the model ended up in front of NPCI.",
+        "The analyst's debrief: why tourists can't pay in India, the ₹20,000 wallet provision in RBI's KYC rules, and how the model ended up in front of NPCI.",
       href: "",
       meta1: "Case study",
       meta2: "2022–23",
@@ -101,7 +101,7 @@ export const SEED_CONTENT: SiteContent = {
       kind: "Fintech",
       title: "Stop missing out on free money",
       description:
-        "What your spending patterns say about which credit cards you should actually hold — the thinking behind ZashIt.",
+        "What your spending mix says about which credit cards you should actually hold — the rewards model behind ZashIt.",
       href: "https://www.zashit.live/waitlist",
       meta1: "Waitlist open",
       meta2: "ZashIt",

@@ -10,10 +10,11 @@ import { list, put, del } from "@vercel/blob";
 export interface Experience {
   id: string; // stable slug; the section anchor is #s-<id>
   period: string; // "May 2025 — Dec 2025"
-  title: string; // "ZashIt — Builder"
+  title: string; // "Doxa — Product Engineer"
   team: string; // "Project · 8 months"
   description: string;
   circuitLabel: string; // non-empty → shown as a corner on the circuit map
+  href?: string; // optional external link on the title
 }
 
 export interface Article {
@@ -36,13 +37,24 @@ export interface SiteContent {
 export const SEED_CONTENT: SiteContent = {
   experiences: [
     {
-      id: "zashit",
+      id: "gullygames",
+      period: "Jul 2026 — Present",
+      title: "Gully Games — Product Engineer",
+      team: "Mobile gaming · Android & iOS · React Native",
+      description:
+        "Building the Gully Games app for Android and iOS from a single React Native codebase. Designed and shipped an in-house ad system, and an admin panel the team uses to manage and distribute player rewards.",
+      circuitLabel: "",
+      href: "https://gullygames.com/",
+    },
+    {
+      id: "doxa",
       period: "May 2025 — Dec 2025",
-      title: "ZashIt — Founder, Research & Product",
+      title: "Doxa — Product Engineer",
       team: "Credit card recommendation engine · 8 months",
       description:
         "Modelled how a user's spending mix decides the right card portfolio: statement OCR reads real spending, an expected-rewards model ranks the cards, and the top two surface. One-to-one consulting sessions with high-earning professionals fed straight back into the matching logic.",
       circuitLabel: "",
+      href: "https://doxa.buzz/",
     },
     {
       id: "fint",
@@ -52,6 +64,7 @@ export const SEED_CONTENT: SiteContent = {
       description:
         "Three months shipping production code in an unfamiliar fintech codebase. Reading someone else's systems fast is its own kind of analysis.",
       circuitLabel: "FINT",
+      href: "https://fintapp.in/",
     },
     {
       id: "fpay",
@@ -101,10 +114,10 @@ export const SEED_CONTENT: SiteContent = {
       kind: "Fintech",
       title: "Stop missing out on free money",
       description:
-        "What your spending mix says about which credit cards you should actually hold — the rewards model behind ZashIt.",
-      href: "https://www.zashit.live/waitlist",
+        "What your spending mix says about which credit cards you should actually hold — the rewards model behind Doxa.",
+      href: "https://doxa.buzz/",
       meta1: "Waitlist open",
-      meta2: "ZashIt",
+      meta2: "Doxa",
     },
   ],
 };
@@ -144,6 +157,7 @@ function sanitize(content: SiteContent): SiteContent {
         team: str(e.team, 200),
         description: str(e.description),
         circuitLabel: str(e.circuitLabel, 20).toUpperCase(),
+        href: /^https?:\/\//i.test(str(e.href, 500)) ? str(e.href, 500) : "",
       })),
     articles: (Array.isArray(content.articles) ? content.articles : [])
       .slice(0, 50)

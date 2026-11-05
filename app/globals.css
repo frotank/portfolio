@@ -115,7 +115,7 @@ body::before{
     radial-gradient(60% 50% at 50% 110%,rgba(168,85,247,.10),transparent 70%),
     radial-gradient(50% 40% at 50% -10%,rgba(225,6,0,.10),transparent 70%),
     var(--carbon);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;
   transition:transform .8s cubic-bezier(.76,0,.24,1),opacity .5s;
   overflow:hidden;
 }
@@ -134,49 +134,6 @@ body::before{
   text-transform:uppercase;text-align:center;min-height:1.4em;
 }
 .gantry-msg strong{color:var(--silver);font-weight:600}
-
-#start-engine{
-  position:relative;border:0;cursor:pointer;
-  padding:20px 52px;background:var(--red);color:#fff;
-  font-family:var(--display);font-style:italic;font-weight:900;font-size:19px;
-  letter-spacing:.16em;text-transform:uppercase;
-  transform:skewX(-12deg);
-  box-shadow:0 0 0 0 rgba(225,6,0,.55);
-  animation:pulse 1.8s infinite;
-  transition:background .2s,transform .2s;
-}
-#start-engine > span{display:inline-block;transform:skewX(12deg)}
-#start-engine:hover{background:var(--red-hot);transform:skewX(-12deg) scale(1.04)}
-@keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(225,6,0,.55)}
-  70%{box-shadow:0 0 0 26px rgba(225,6,0,0)}
-  100%{box-shadow:0 0 0 0 rgba(225,6,0,0)}
-}
-#gantry.armed #start-engine{display:none}
-#run-silent{
-  background:none;border:0;cursor:pointer;
-  font-family:var(--data);font-size:11px;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--dim);border-bottom:1px solid var(--line);padding-bottom:4px;
-}
-#run-silent:hover{color:var(--purple);border-color:var(--purple)}
-#gantry.armed #run-silent{display:none}
-
-/* fly-by car — real W15, flipped to face direction of travel */
-#flyby{
-  position:absolute;top:50%;left:0;width:min(80vw,940px);
-  transform:translate(-130vw,-50%);pointer-events:none;z-index:2;
-}
-#flyby.go{animation:fly 1.25s cubic-bezier(.55,0,.5,1) forwards}
-@keyframes fly{
-  0%{transform:translate(-130vw,-50%) }
-  100%{transform:translate(140vw,-50%) }
-}
-#flyby img{
-  width:100%;display:block;transform:scaleX(-1);
-  -webkit-mask-image:radial-gradient(72% 62% at 50% 50%,#000 50%,transparent 74%);
-          mask-image:radial-gradient(72% 62% at 50% 50%,#000 50%,transparent 74%);
-}
-#flyby.go img{filter:blur(2.5px) saturate(1.15)}
 
 /* speed streaks during fly-by */
 .streaks{position:absolute;inset:0;pointer-events:none;opacity:0}
@@ -640,6 +597,8 @@ body.launched .hin.d5{transition-delay:.6s}
 .stint:first-child .node::before{top:9px}
 .stint:last-child .node::before{bottom:auto;height:20px}
 .stint h3{font-family:var(--display);font-style:italic;font-weight:900;font-size:22px;text-transform:uppercase}
+.stint h3 a{text-decoration:none;transition:color .2s}
+.stint h3 a:hover{color:var(--red)}
 .stint .team{font-family:var(--data);font-size:12px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin:5px 0 12px}
 .stint p{color:var(--dim);max-width:62ch}
 
@@ -726,7 +685,6 @@ footer{
   #tower a.live{border-top-color:var(--purple)}
   #sound-toggle{bottom:86px}
   #grid-hero::before{display:none}
-  #flyby{width:82vw}
   .race-no{font-size:clamp(180px,44vw,340px)}
   .telemetry{grid-template-columns:1fr}
   .class-head{display:none}
@@ -754,5 +712,5 @@ footer{
   .bar i{transition:none;width:var(--v)}
   #speed{display:none}
   #track-bg .bg-car{display:none}
-  .ticker-inner,.wave i,.tower-head .flag,.scroll-cue .chev,#start-engine{animation:none}
+  .ticker-inner,.wave i,.tower-head .flag,.scroll-cue .chev{animation:none}
 }

@@ -102,7 +102,7 @@ body::before{
     radial-gradient(60% 50% at 50% 110%,rgba(168,85,247,.10),transparent 70%),
     radial-gradient(50% 40% at 50% -10%,rgba(225,6,0,.10),transparent 70%),
     var(--carbon);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;
   transition:transform .8s cubic-bezier(.76,0,.24,1),opacity .5s;
   overflow:hidden;
 }
@@ -121,32 +121,6 @@ body::before{
   text-transform:uppercase;text-align:center;min-height:1.4em;
 }
 .gantry-msg strong{color:var(--silver);font-weight:600}
-
-#start-engine{
-  position:relative;border:0;cursor:pointer;
-  padding:20px 52px;background:var(--red);color:#fff;
-  font-family:var(--display);font-style:italic;font-weight:900;font-size:19px;
-  letter-spacing:.16em;text-transform:uppercase;
-  transform:skewX(-12deg);
-  box-shadow:0 0 0 0 rgba(225,6,0,.55);
-  animation:pulse 1.8s infinite;
-  transition:background .2s,transform .2s;
-}
-#start-engine > span{display:inline-block;transform:skewX(12deg)}
-#start-engine:hover{background:var(--red-hot);transform:skewX(-12deg) scale(1.04)}
-@keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(225,6,0,.55)}
-  70%{box-shadow:0 0 0 26px rgba(225,6,0,0)}
-  100%{box-shadow:0 0 0 0 rgba(225,6,0,0)}
-}
-#gantry.armed #start-engine{display:none}
-#run-silent{
-  background:none;border:0;cursor:pointer;
-  font-family:var(--data);font-size:11px;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--dim);border-bottom:1px solid var(--line);padding-bottom:4px;
-}
-#run-silent:hover{color:var(--purple);border-color:var(--purple)}
-#gantry.armed #run-silent{display:none}
 
 /* fly-by car — real W15, flipped to face direction of travel */
 #flyby{
@@ -747,7 +721,7 @@ footer{
   .bar i{transition:none;width:var(--v)}
   #speed{display:none}
   #track-bg .bg-car{display:none}
-  .ticker-inner,.wave i,.tower-head .flag,.scroll-cue .chev,#start-engine{animation:none}
+  .ticker-inner,.wave i,.tower-head .flag,.scroll-cue .chev{animation:none}
 }
 </style>
 </head>
@@ -868,9 +842,7 @@ footer{
     <div class="pod"><span class="lamp"></span><span class="lamp"></span></div>
     <div class="pod"><span class="lamp"></span><span class="lamp"></span></div>
   </div>
-  <button id="start-engine"><span>Start engine</span></button>
-  <p class="gantry-msg" id="gantry-msg">Press to launch · sound on</p>
-  <button id="run-silent">Run silent — no sound</button>
+  <p class="gantry-msg" id="gantry-msg">Lights in sequence</p>
   <div id="flyby" aria-hidden="true"><img src="assets/w15-quarter.webp" alt=""></div>
 </div>
 
@@ -1029,10 +1001,10 @@ footer{
         <span class="go">→</span>
       </a>
 
-      <a class="entry set" id="p-zashit" href="https://www.zashit.live/waitlist" target="_blank" rel="noopener" aria-label="ZashIt, project details">
+      <a class="entry set" id="p-doxa" href="https://doxa.buzz/" target="_blank" rel="noopener" aria-label="Doxa, project details">
         <span class="pos">03</span>
         <span>
-          <h3>ZashIt</h3>
+          <h3>Doxa</h3>
           <p>Credit card recommendation engine that reads your real spending patterns and matches you to the two cards that pay you back the most — plus hands-on CC consulting for HENRYs. Stop missing out on free money.</p>
           <span class="stack"><span>OCR</span><span>Fintech</span><span>Product strategy</span></span>
         </span>
@@ -1087,7 +1059,7 @@ footer{
       <div class="stint rv">
         <span class="yr">May 2025 — Dec 2025</span><span class="node"></span>
         <div>
-          <h3>ZashIt — Builder</h3>
+          <h3>Doxa — Builder</h3>
           <p class="team">Project · 8 months</p>
           <p>Building a credit card recommendation engine — analyzing real spending patterns to match users with the cards that maximize their rewards. Stop missing out on free money.</p>
         </div>
@@ -1140,11 +1112,11 @@ footer{
         <p>Why tourists can't pay in India, the ₹20,000 wallet loophole in RBI's KYC rules, and how the model ended up in front of NPCI.</p>
         <span class="meta"><span>Case study</span><span>2022–23</span></span>
       </a>
-      <a class="article" href="https://www.zashit.live/waitlist" target="_blank" rel="noopener" aria-label="Read: Stop missing out on free money">
+      <a class="article" href="https://doxa.buzz/" target="_blank" rel="noopener" aria-label="Read: Stop missing out on free money">
         <span class="doc"><b>Doc 44</b><span>Fintech</span></span>
         <h3>Stop missing out on free money</h3>
-        <p>What your spending patterns say about which credit cards you should actually hold — the thinking behind ZashIt.</p>
-        <span class="meta"><span>Waitlist open</span><span>ZashIt</span></span>
+        <p>What your spending patterns say about which credit cards you should actually hold — the thinking behind Doxa.</p>
+        <span class="meta"><span>Waitlist open</span><span>Doxa</span></span>
       </a>
     </div>
   </div>
@@ -1200,7 +1172,7 @@ footer{
     {label:'FINT',        frac:0.375,target:'#s-fint'},
     {label:'VALIDATE',    frac:0.46, target:'#p-validate'},
     {label:'SNEAKER SAGE',frac:0.545,target:'#p-sneaker'},
-    {label:'ZASHIT',      frac:0.63, target:'#p-zashit'},
+    {label:'DOXA',      frac:0.63, target:'#p-doxa'},
     {label:'STOCKAPP',    frac:0.715,target:'#p-stockapp'},
     {label:'SANKHYA',     frac:0.80, target:'#p-sankhya'},
     {label:'RADIO',       frac:0.92, target:'#radio'}
@@ -1339,14 +1311,14 @@ footer{
     gantry.classList.add('armed');
     msg.textContent = 'Engine running · lights in sequence';
     ignition();
-    var base = 700, step = 420;
+    var base = 380, step = 260;
     pods.forEach(function(pod, i){
       timers.push(setTimeout(function(){
         pod.classList.add('on');
         revTo(70 + i * 22);
       }, base + i * step));
     });
-    var outAt = base + 5 * step + 650;
+    var outAt = base + 5 * step + 520;
     timers.push(setTimeout(function(){
       pods.forEach(function(p){ p.classList.remove('on'); });
       msg.innerHTML = "It's <strong>lights out</strong> and away we go";
@@ -1363,15 +1335,11 @@ footer{
     gantry.classList.add('gone');
   } else {
     document.body.style.overflow = 'hidden';
-    document.getElementById('start-engine').addEventListener('click', function(e){
-      e.stopPropagation();
-      runSequence(false);
-    });
-    document.getElementById('run-silent').addEventListener('click', function(e){
-      e.stopPropagation();
-      runSequence(true);
-    });
-    /* once armed, a later click anywhere skips */
+    /* no button — the lights run the moment you land.
+       browsers block audio without a gesture, so start muted;
+       the sound toggle unmutes the rest of the site. */
+    runSequence(true);
+    /* a click anywhere skips the rest */
     gantry.addEventListener('click', function(){
       if (gantry.classList.contains('armed')) launchDone();
     });

@@ -12,7 +12,7 @@ const STATIC_CORNERS = [
   { label: "TELEMETRY", target: "#telemetry" },
   { label: "FPAY", target: "#p-fpay" },
   { label: "VALIDATE", target: "#p-validate" },
-  { label: "ZASHIT", target: "#p-zashit" },
+  { label: "DOXA", target: "#p-doxa" },
   { label: "SNEAKER SAGE", target: "#p-sneaker" },
   { label: "SANKHYA", target: "#p-sankhya" },
   { label: "STOCKAPP", target: "#p-stockapp" },
@@ -167,58 +167,12 @@ export default function HomeClient({ content }: { content: SiteContent }) {
       idleOsc.stop(t + 0.5);
       idleOsc = null;
     }
-    function flybySound() {
-      if (!actx) return;
-      const t = actx.currentTime;
-      (
-        [
-          ["sawtooth", 1],
-          ["square", 0.45],
-        ] as [OscillatorType, number][]
-      ).forEach(function (cfg) {
-        const o = actx!.createOscillator(),
-          g = actx!.createGain(),
-          f = actx!.createBiquadFilter();
-        o.type = cfg[0];
-        f.type = "lowpass";
-        f.frequency.setValueAtTime(3200, t);
-        f.frequency.exponentialRampToValueAtTime(500, t + 1.25);
-        o.frequency.setValueAtTime(85, t);
-        o.frequency.exponentialRampToValueAtTime(640, t + 0.55); /* approach — pitch climbs */
-        o.frequency.exponentialRampToValueAtTime(52, t + 1.25); /* doppler drop as it passes */
-        g.gain.setValueAtTime(0.001, t);
-        g.gain.exponentialRampToValueAtTime(0.5 * cfg[1], t + 0.5);
-        g.gain.exponentialRampToValueAtTime(0.001, t + 1.3);
-        o.connect(f);
-        f.connect(g);
-        g.connect(master!);
-        o.start(t);
-        o.stop(t + 1.35);
-      });
-      const src = actx.createBufferSource();
-      src.buffer = noiseBuf(1.3);
-      const bp = actx.createBiquadFilter();
-      bp.type = "bandpass";
-      bp.Q.value = 0.8;
-      bp.frequency.setValueAtTime(2600, t);
-      bp.frequency.exponentialRampToValueAtTime(220, t + 1.25);
-      const ng = actx.createGain();
-      ng.gain.setValueAtTime(0.001, t);
-      ng.gain.exponentialRampToValueAtTime(0.22, t + 0.55);
-      ng.gain.exponentialRampToValueAtTime(0.001, t + 1.3);
-      src.connect(bp);
-      bp.connect(ng);
-      ng.connect(master!);
-      src.start(t);
-    }
-
     /* ============================================================
        LAUNCH SEQUENCE
        ============================================================ */
     const gantry = document.getElementById("gantry")!;
     const msg = document.getElementById("gantry-msg")!;
     const pods = gantry.querySelectorAll(".pod");
-    const flyby = document.getElementById("flyby")!;
     const timers: ReturnType<typeof setTimeout>[] = [];
     let launched = false;
 
@@ -241,8 +195,8 @@ export default function HomeClient({ content }: { content: SiteContent }) {
       gantry.classList.add("armed");
       msg.textContent = "Engine running · lights in sequence";
       ignition();
-      const base = 700,
-        step = 420;
+      const base = 380,
+        step = 260;
       pods.forEach(function (pod, i) {
         timers.push(
           setTimeout(function () {
@@ -251,7 +205,7 @@ export default function HomeClient({ content }: { content: SiteContent }) {
           }, base + i * step)
         );
       });
-      const outAt = base + 5 * step + 650;
+      const outAt = base + 5 * step + 520;
       timers.push(
         setTimeout(function () {
           pods.forEach(function (p) {
@@ -260,11 +214,9 @@ export default function HomeClient({ content }: { content: SiteContent }) {
           msg.innerHTML = "It's <strong>lights out</strong> and away we go";
           gantry.classList.add("flying");
           killIdle();
-          flybySound();
-          flyby.classList.add("go");
         }, outAt)
       );
-      timers.push(setTimeout(launchDone, outAt + 1300));
+      timers.push(setTimeout(launchDone, outAt + 700));
     }
 
     if (reduced) {
@@ -272,23 +224,11 @@ export default function HomeClient({ content }: { content: SiteContent }) {
       gantry.classList.add("gone");
     } else if (!gantry.classList.contains("gone")) {
       document.body.style.overflow = "hidden";
-      document.getElementById("start-engine")!.addEventListener(
-        "click",
-        function (e) {
-          e.stopPropagation();
-          runSequence(false);
-        },
-        { signal: sig }
-      );
-      document.getElementById("run-silent")!.addEventListener(
-        "click",
-        function (e) {
-          e.stopPropagation();
-          runSequence(true);
-        },
-        { signal: sig }
-      );
-      /* once armed, a later click anywhere skips */
+      /* no button — the lights run the moment you land.
+         browsers block audio without a gesture, so start muted;
+         the sound toggle unmutes the rest of the site. */
+      runSequence(true);
+      /* a click anywhere skips the rest */
       gantry.addEventListener(
         "click",
         function () {
@@ -785,17 +725,9 @@ export default function HomeClient({ content }: { content: SiteContent }) {
             <span className="lamp"></span>
           </div>
         </div>
-        <button id="start-engine">
-          <span>Start engine</span>
-        </button>
         <p className="gantry-msg" id="gantry-msg">
-          Press to launch · sound on
+          Lights in sequence
         </p>
-        <button id="run-silent">Run silent — no sound</button>
-        <div id="flyby" aria-hidden="true">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/w15-quarter.webp" alt="" />
-        </div>
       </div>
 
       {/* TIMING TOWER NAV */}
@@ -913,11 +845,11 @@ export default function HomeClient({ content }: { content: SiteContent }) {
           </div>
           <div className="wrap">
             <p className="hero-eyebrow hin d1">
-              <span className="dot"></span>Car No. 09 &nbsp;·&nbsp; Business &amp;
-              Product Analyst · Fintech &amp; Payments
+              <span className="dot"></span>Car No. 09 &nbsp;·&nbsp; Product
+              Engineer
             </p>
             <h1 className="hin d2">
-              <span className="thin">Lights out —</span>
+              <span className="thin">Lights out</span>
               Gunesh <span className="hollow">Munjal</span>
               <span className="accent">.</span>
             </h1>
@@ -945,8 +877,8 @@ export default function HomeClient({ content }: { content: SiteContent }) {
                 <small>Interviews</small>
               </div>
               <div>
-                <b>01</b>
-                <small>Model at NPCI</small>
+                <b>02</b>
+                <small>App platforms · iOS &amp; Android</small>
               </div>
               <div>
                 <b>454</b>
@@ -1023,25 +955,25 @@ export default function HomeClient({ content }: { content: SiteContent }) {
               <div className="compound">
                 <span className="tyre soft">S</span>
                 <small>
-                  <b>Soft — daily stint</b>Customer research · interviews
+                  <b>Soft — daily stint</b>Python · SQL · modelling
                 </small>
               </div>
               <div className="compound">
                 <span className="tyre med">M</span>
                 <small>
-                  <b>Medium — long runs</b>SQL · Python · modelling
+                  <b>Medium — long runs</b>Next.js · React Native
                 </small>
               </div>
               <div className="compound">
                 <span className="tyre hard">H</span>
                 <small>
-                  <b>Hard — endurance</b>Payments · RBI · UPI rules
+                  <b>Hard — endurance</b>Payment infrastructure
                 </small>
               </div>
               <div className="compound">
                 <span className="tyre inter">I</span>
                 <small>
-                  <b>Inters — changing conditions</b>Building the tooling · Next.js
+                  <b>Inters — changing conditions</b>Customer research · interviews
                 </small>
               </div>
             </div>
@@ -1049,12 +981,12 @@ export default function HomeClient({ content }: { content: SiteContent }) {
             <div className="telemetry">
               {(
                 [
-                  ["Customer research · 1,000+ interviews · market sizing", "94%"],
-                  ["Payments & regulation · RBI KYC · PPI · UPI · NPCI", "92%"],
-                  ["Competitor analysis · go-to-market strategy", "90%"],
-                  ["SQL · Python · spending-pattern modelling", "88%"],
-                  ["Product strategy · recommendation logic · pricing", "86%"],
-                  ["Building the tooling · Next.js · TypeScript · Supabase", "84%"],
+                  ["React Native · Expo · cross-platform mobile apps", "94%"],
+                  ["Python · data modelling · spending-pattern analysis", "92%"],
+                  ["Next.js · TypeScript · Supabase · full-stack web", "90%"],
+                  ["Payment infrastructure · UPI · KYC flows", "88%"],
+                  ["Recommendation logic · statement OCR pipelines", "86%"],
+                  ["Product thinking · customer interviews", "84%"],
                 ] as [string, string][]
               ).map(([nm, pc]) => (
                 <div
@@ -1159,15 +1091,15 @@ export default function HomeClient({ content }: { content: SiteContent }) {
 
               <a
                 className="entry set"
-                id="p-zashit"
-                href="https://www.zashit.live/waitlist"
+                id="p-doxa"
+                href="https://doxa.buzz/"
                 target="_blank"
                 rel="noopener"
-                aria-label="ZashIt, project details"
+                aria-label="Doxa, project details"
               >
                 <span className="pos">03</span>
                 <span>
-                  <h3>ZashIt</h3>
+                  <h3>Doxa</h3>
                   <p>
                     Reads a user&apos;s real spending mix from statement OCR,
                     models expected rewards across cards, and surfaces the two
@@ -1282,7 +1214,7 @@ export default function HomeClient({ content }: { content: SiteContent }) {
             </p>
             <h2 className="rv">Stint history</h2>
             <p className="lede rv">
-              Three stints, one line through the corner: find the question,
+              Four stints, one line through the corner: find the question,
               get the data, hand over a decision.
             </p>
 
@@ -1292,7 +1224,15 @@ export default function HomeClient({ content }: { content: SiteContent }) {
                   <span className="yr">{e.period}</span>
                   <span className="node"></span>
                   <div>
-                    <h3>{e.title}</h3>
+                    <h3>
+                      {e.href ? (
+                        <a href={e.href} target="_blank" rel="noopener">
+                          {e.title} ↗
+                        </a>
+                      ) : (
+                        e.title
+                      )}
+                    </h3>
                     <p className="team">{e.team}</p>
                     <p>{e.description}</p>
                   </div>
@@ -1410,12 +1350,6 @@ export default function HomeClient({ content }: { content: SiteContent }) {
                 rel="noopener"
               >
                 GitHub ↗
-              </a>
-              <a
-                href="/Gunesh-Munjal-Analyst-CV.pdf"
-                download="Gunesh-Munjal-Analyst-CV.pdf"
-              >
-                Analyst CV ↓
               </a>
             </div>
           </div>

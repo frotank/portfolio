@@ -360,7 +360,7 @@ export default function AdminPanel({
                   <Field
                     label="Title"
                     value={e.title}
-                    placeholder="ZashIt — Builder"
+                    placeholder="Doxa — Product Engineer"
                     onChange={(v) =>
                       update({ ...content, experiences: exps.map((x, j) => (j === i ? { ...x, title: v } : x)) })
                     }
@@ -388,6 +388,15 @@ export default function AdminPanel({
                     placeholder="Empty = off the map"
                     onChange={(v) =>
                       update({ ...content, experiences: exps.map((x, j) => (j === i ? { ...x, circuitLabel: v } : x)) })
+                    }
+                  />
+                  <Field
+                    label="Link"
+                    hint="optional · makes the title clickable"
+                    value={e.href || ""}
+                    placeholder="https://…"
+                    onChange={(v) =>
+                      update({ ...content, experiences: exps.map((x, j) => (j === i ? { ...x, href: v } : x)) })
                     }
                   />
                   <Field

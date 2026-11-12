@@ -863,13 +863,6 @@ export default function HomeClient({ content }: { content: SiteContent }) {
               <a className="btn p" href="#classification">
                 <span>View the analysis</span>
               </a>
-              <a
-                className="btn s"
-                href="/Gunesh-Munjal-Analyst-CV.pdf"
-                download="Gunesh-Munjal-Analyst-CV.pdf"
-              >
-                <span>Download CV</span>
-              </a>
             </div>
             <div className="hero-stats hin d4">
               <div>
